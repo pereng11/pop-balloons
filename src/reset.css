@@ -3,6 +3,11 @@
    License: none (public domain)
 */
 
+@font-face {
+  font-family: "Blomberg";
+  src: url("/public/fonts/Blomberg.otf");
+}
+
 html,
 body,
 div,
@@ -107,6 +112,7 @@ section {
 }
 body {
   line-height: 1;
+  font-family: "Blomberg";
 }
 ol,
 ul {

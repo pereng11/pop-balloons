@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { COLOR } from "../../consts/Color";
 import { FRAME } from "../../consts/Frame";
 import { AnimationUtil } from "../../utils/Animation";
+import style from "./Balloon.module.css";
 
 interface Props {
   color: COLOR;
@@ -48,7 +49,7 @@ export const Balloon = (props: Props) => {
       isPopping.current = false;
       onPopped();
     }
-  }, [frameIndex]);
+  }, [frameIndex, onPopped]);
 
   const preloadImages = () => {
     for (let frame = 1; frame <= FRAME.BALLOON; frame++) {
@@ -77,5 +78,11 @@ export const Balloon = (props: Props) => {
     isPopping.current = true;
   };
 
-  return <canvas ref={canvasRef} onMouseDown={handleMouseDownBallon} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={style.balloon}
+      onMouseDown={handleMouseDownBallon}
+    />
+  );
 };

@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCounterContext } from "../../contexts/CounterContext";
 import style from "./Counter.module.css";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export const Counter = () => {
   const { count, increase, decrease } = useCounterContext();
@@ -10,19 +12,14 @@ export const Counter = () => {
 
   return (
     <div>
+      <p className={style.guideText}>how many people?</p>
       <div className={style.buttonBox}>
-        <button
-          className={`${style.button} ${style.decrease}`}
-          onClick={handleClickDecrease}
-        >
-          -
+        <button className={`${style.button}`} onClick={handleClickDecrease}>
+          <FontAwesomeIcon icon={faMinus} />
         </button>
-        <span>{count}</span>
-        <button
-          className={`${style.button} ${style.increase}`}
-          onClick={increase}
-        >
-          +
+        <span className={style.count}>{count}</span>
+        <button className={`${style.button}`} onClick={increase}>
+          <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
     </div>
