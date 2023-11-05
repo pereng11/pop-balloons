@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { COLOR } from "../../consts/Color";
 import { FRAME } from "../../consts/Frame";
 import { AnimationUtil } from "../../utils/Animation";
@@ -18,6 +18,11 @@ export const Balloon = (props: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const intervalId = useRef<number>(0);
   const isPopping = useRef(false);
+
+  const popAudio = useMemo(
+    () => new Audio("/public/audio/balloon-pop.mp3"),
+    []
+  );
 
   useEffect(() => {
     preloadImages();
@@ -71,11 +76,11 @@ export const Balloon = (props: Props) => {
   const handleMouseDownBallon = () => {
     if (isPopping.current) return;
 
-    console.log("mouseDown");
     intervalId.current = window.setInterval(() => {
       setFrameIndex((prev) => prev + 1);
     }, 16);
     isPopping.current = true;
+    popAudio.play();
   };
 
   return (

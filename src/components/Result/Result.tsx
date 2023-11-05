@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import ReactCanvasConfetti from "react-canvas-confetti";
 import { defaultCanvasStyles, useConfetti } from "../../hooks/useConfetti";
 import style from "./Result.module.css";
@@ -8,11 +8,17 @@ import { URI } from "../../consts/URI";
 export const Result = () => {
   const { fire, refConfetti } = useConfetti();
 
+  const cheerAudio = useMemo(
+    () => new Audio("/public/audio/crowd-cheer.mp3"),
+    []
+  );
+
   useEffect(() => {
     fire();
+    cheerAudio.play();
     const intervalId = setInterval(fire, 2000);
     return () => clearInterval(intervalId);
-  }, [fire]);
+  }, [fire, cheerAudio]);
 
   return (
     <div className={style.container}>
