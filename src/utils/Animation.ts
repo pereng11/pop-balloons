@@ -3,6 +3,6 @@ import { URLUtil } from "./URL";
 
 export class AnimationUtil {
   static getCurrentFrame(color: COLOR, frame: number) {
-    return URLUtil.getDynamicURL(`/public/balloon/${color}/${frame}.png`);
+    return URLUtil.getDynamicURL(`/balloon/${color}/${frame}.png`);
   }
 }
