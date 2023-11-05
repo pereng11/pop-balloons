@@ -4,12 +4,13 @@ import { defaultCanvasStyles, useConfetti } from "../../hooks/useConfetti";
 import style from "./Result.module.css";
 import { Link } from "react-router-dom";
 import { URI } from "../../consts/URI";
+import { URLUtil } from "../../utils/URL";
 
 export const Result = () => {
   const { fire, refConfetti } = useConfetti();
 
   const cheerAudio = useMemo(
-    () => new Audio("/public/audio/crowd-cheer.mp3"),
+    () => new Audio(URLUtil.getDynamicURL("/public/audio/crowd-cheer.mp3")),
     []
   );
 

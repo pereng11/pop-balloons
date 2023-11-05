@@ -1,8 +1,8 @@
 import { COLOR } from "../consts/Color";
+import { URLUtil } from "./URL";
 
 export class AnimationUtil {
   static getCurrentFrame(color: COLOR, frame: number) {
-    return new URL(`/public/balloon/${color}/${frame}.png`, import.meta.url)
-      .href;
+    return URLUtil.getDynamicURL(`/public/balloon/${color}/${frame}.png`);
   }
 }

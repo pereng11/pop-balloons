@@ -3,6 +3,7 @@ import { COLOR } from "../../consts/Color";
 import { FRAME } from "../../consts/Frame";
 import { AnimationUtil } from "../../utils/Animation";
 import style from "./Balloon.module.css";
+import { URLUtil } from "../../utils/URL";
 
 interface Props {
   color: COLOR;
@@ -20,7 +21,7 @@ export const Balloon = (props: Props) => {
   const isPopping = useRef(false);
 
   const popAudio = useMemo(
-    () => new Audio("/public/audio/balloon-pop.mp3"),
+    () => new Audio(URLUtil.getDynamicURL("/public/audio/balloon-pop.mp3")),
     []
   );
 
