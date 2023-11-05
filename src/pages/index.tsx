@@ -5,12 +5,11 @@ import { URI } from "../consts/URI";
 
 export const Index = () => {
   return (
-    <div>
+    <div className={style.container}>
       <header className={style.header}>
-        <h1 className={style.title}>풍선 복불복</h1>
+        <h1 className={style.title}>Popping Balloons</h1>
       </header>
       <main className={style.main}>
-        <p>인원 수</p>
         <Counter />
         <Link to={URI.BALLOONS}>시작</Link>
       </main>
