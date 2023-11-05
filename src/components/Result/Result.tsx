@@ -5,12 +5,13 @@ import style from "./Result.module.css";
 import { Link } from "react-router-dom";
 import { URI } from "../../consts/URI";
 import { URLUtil } from "../../utils/URL";
+import cheerAudioSrc from "/public/audio/crowd-cheer.mp3";
 
 export const Result = () => {
   const { fire, refConfetti } = useConfetti();
 
   const cheerAudio = useMemo(
-    () => new Audio(URLUtil.getDynamicURL("/public/audio/crowd-cheer.mp3")),
+    () => new Audio(URLUtil.getDynamicURL(cheerAudioSrc)),
     []
   );
 
