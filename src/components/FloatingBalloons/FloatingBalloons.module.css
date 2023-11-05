@@ -1,0 +1,100 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  > :nth-child(1) {
+    top: 8%;
+  }
+
+  > :nth-child(2) {
+    top: 13%;
+    left: 46%;
+  }
+
+  > :nth-child(3) {
+    top: 28%;
+    left: -8%;
+  }
+
+  > :nth-child(4) {
+    top: 22%;
+    left: 25%;
+  }
+
+  > :nth-child(5) {
+    top: 30%;
+    left: 60%;
+  }
+}
+
+.balloon {
+  display: inline-block;
+  width: 120px;
+  height: 145px;
+  background: hsl(215, 50%, 65%);
+  border-radius: 80%;
+  position: absolute;
+  box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
+  margin: 20px 30px;
+  transition: transform 0.5s ease;
+  z-index: 10;
+  animation: balloons 4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes balloons {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(4deg);
+  }
+}
+
+.balloon:before {
+  content: "▲";
+  font-size: 20px;
+  color: hsl(215, 30%, 50%);
+  display: block;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: -12px;
+  z-index: -100;
+}
+
+.balloon:nth-child(2) {
+  background: hsl(0, 80%, 56%);
+  animation-duration: 3.5s;
+}
+.balloon:nth-child(2):before {
+  color: hsl(0, 60%, 50%);
+}
+
+.balloon:nth-child(3) {
+  background: hsl(139, 50%, 60%);
+  animation-duration: 3s;
+}
+.balloon:nth-child(3):before {
+  color: hsl(139, 30%, 50%);
+}
+
+.balloon:nth-child(4) {
+  background: hsl(59, 50%, 58%);
+  animation-duration: 4.5s;
+}
+.balloon:nth-child(4):before {
+  color: hsl(59, 30%, 52%);
+}
+
+.balloon:nth-child(5) {
+  background: hsl(23, 55%, 57%);
+  animation-duration: 5s;
+}
+.balloon:nth-child(5):before {
+  color: hsl(23, 44%, 46%);
+}
