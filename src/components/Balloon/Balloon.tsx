@@ -3,7 +3,7 @@ import { COLOR } from "../../consts/Color";
 import { FRAME } from "../../consts/Frame";
 import { AnimationUtil } from "../../utils/Animation";
 import style from "./Balloon.module.css";
-import popAudioSrc from "/audio/balloon-pop.mp3";
+import popAudioSrc from "./../../assets/audio/balloon-pop.mp3";
 
 interface Props {
   color: COLOR;
@@ -57,6 +57,7 @@ export const Balloon = (props: Props) => {
   const preloadImages = () => {
     for (let frame = 1; frame <= FRAME.BALLOON; frame++) {
       const img = new Image();
+      // const imgSrc = AnimationUtil.getCurrentFrame(color, frame);
       const imgSrc = AnimationUtil.getCurrentFrame(color, frame);
       img.src = imgSrc;
       setImages((prev) => [...prev, img]);
