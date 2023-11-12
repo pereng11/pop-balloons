@@ -8,10 +8,11 @@ import popAudioSrc from "./../../assets/audio/balloon-pop.mp3";
 interface Props {
   color: COLOR;
   onPopped: () => void;
+  popImmediately?: boolean;
 }
 
 export const Balloon = (props: Props) => {
-  const { color, onPopped } = props;
+  const { color, onPopped, popImmediately = false } = props;
 
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [frameIndex, setFrameIndex] = useState(1);
@@ -26,6 +27,12 @@ export const Balloon = (props: Props) => {
     preloadImages();
     renderCanvas();
   }, []);
+
+  useEffect(() => {
+    if (popImmediately) {
+      popBalloon();
+    }
+  }, [popImmediately]);
 
   useEffect(() => {
     if (!canvasRef.current || images.length < 1 || frameIndex > 6) {
@@ -72,14 +79,18 @@ export const Balloon = (props: Props) => {
     context.canvas.height = 512;
   };
 
-  const handleMouseDownBallon = () => {
-    if (isPopping.current) return;
-
+  const popBalloon = () => {
     intervalId.current = window.setInterval(() => {
       setFrameIndex((prev) => prev + 1);
     }, 16);
     isPopping.current = true;
     popAudio.play();
+  };
+
+  const handleMouseDownBallon = () => {
+    if (isPopping.current) return;
+
+    popBalloon();
   };
 
   return (

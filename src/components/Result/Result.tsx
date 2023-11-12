@@ -17,7 +17,7 @@ export const Result = () => {
 
   return (
     <div className={style.container}>
-      <p className={style.message}>YEAH!!!</p>
+      <p className={style.message}>You Lose</p>
       <Link to={URI.INDEX} className={style.replay}>
         Replay
       </Link>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Balloon } from "../components/Balloon/Balloon";
 import { getRandomColor } from "../consts/Color";
 import { useCounterContext } from "../contexts/CounterContext";
@@ -14,14 +14,33 @@ export const BalloonsPage = () => {
     NumberUtil.generateRandomNumber(count, 2)
   );
   const { fire, refConfetti } = useConfetti();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPopImmediately, setIsPopImmediately] = useState(false);
+  const timeoutIdRef = useRef<number>(0);
 
-  const onBalloonPopped = () => {
+  const onPopBalloon = () => {
     fire();
     balloonsCount > 0 && setBalloonsCount((prev) => prev - 1);
   };
 
+  const handleMouseDown = () => {
+    timeoutIdRef.current = window.setTimeout(() => {
+      setIsPopImmediately(true);
+    }, 500);
+  };
+
+  const handleMouseUp = () => {
+    clearTimeout(timeoutIdRef.current);
+    setIsPopImmediately(false);
+  };
+
   return (
-    <div className={style.container}>
+    <div
+      ref={containerRef}
+      className={style.container}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
       <ReactCanvasConfetti
         style={defaultCanvasStyles}
         refConfetti={refConfetti}
@@ -30,7 +49,8 @@ export const BalloonsPage = () => {
         <Balloon
           key={balloonsCount}
           color={getRandomColor()}
-          onPopped={onBalloonPopped}
+          onPopped={onPopBalloon}
+          popImmediately={isPopImmediately}
         />
       ) : (
         <Result />
