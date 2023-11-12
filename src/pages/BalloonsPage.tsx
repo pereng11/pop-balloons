@@ -40,6 +40,8 @@ export const BalloonsPage = () => {
       className={style.container}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
+      onTouchStart={handleMouseDown}
+      onTouchEnd={handleMouseUp}
     >
       <ReactCanvasConfetti
         style={defaultCanvasStyles}

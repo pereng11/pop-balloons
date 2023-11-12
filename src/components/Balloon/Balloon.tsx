@@ -98,6 +98,7 @@ export const Balloon = (props: Props) => {
       ref={canvasRef}
       className={style.balloon}
       onMouseDown={handleMouseDownBallon}
+      onTouchStart={handleMouseDownBallon}
     />
   );
 };
