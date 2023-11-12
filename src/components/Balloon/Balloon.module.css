@@ -1,5 +1,6 @@
 .balloon {
   animation: balloon 2000ms ease-in-out infinite;
+  user-select: none;
 }
 
 @keyframes balloon {

@@ -11,6 +11,7 @@
   text-align: center;
   z-index: 1;
   animation: message 600ms ease-in-out infinite;
+  user-select: none;
 }
 
 @keyframes message {
